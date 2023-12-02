@@ -1,4 +1,3 @@
-
 # with open("sampleData.txt", "r" ) as data:
 with open("input.txt", "r" ) as data:
     res = data.readlines()
