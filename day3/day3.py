@@ -4,7 +4,6 @@ import re
 with open("input.txt", "r" ) as data:
     res = data.readlines()
 
-
 cols = len(res[0].strip())
 rows = len(res)
 
@@ -40,11 +39,10 @@ for i in range(rows):
         currentRow = currentRow.replace(number, '.'*len(number),1)
 
 print(answer)
+
      
 # part 2
-answer = 0
 
-# 1 find all gears 
 def getNum(pos, row):
     left = pos
     right = pos
@@ -63,6 +61,8 @@ def getNum(pos, row):
     num = int(row[left:right+1])
     return num,left,right
 
+answer = 0
+
 for i in range(rows):
     previousRow = matrix[i-1]
     currentRow = matrix[i]
@@ -71,8 +71,6 @@ for i in range(rows):
     gears = re.findall('\*',currentRow)
 
     if (gears):
-        print(gears)
-
         for gear in gears:
             gearpos = currentRow.find(gear)
             numbers = []
