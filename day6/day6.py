@@ -6,15 +6,15 @@ with open("input.txt", "r" ) as data:
 times = re.findall("[\d]+", res[0])
 distances = re.findall("[\d]+", res[1])
 
-def getTimes(minDistance, time): 
+def getTimes(minDistance, reaminingTime): 
     times = 0   
     speed = 0
     distanceTraveled = 0
     speed = 0
-    while time > 0:
+    while reaminingTime > 0:
         speed += 1
-        time -= 1
-        distanceTraveled = speed * time
+        reaminingTime -= 1
+        distanceTraveled = speed * reaminingTime
         if distanceTraveled > minDistance:
             times+=1
 
