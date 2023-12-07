@@ -1,4 +1,3 @@
-import re
 import queue
 #with open("sampleData.txt", "r" ) as data:
 with open("input.txt", "r" ) as data:
@@ -77,7 +76,6 @@ for line in res:
     sortedHandValues = sorted(handValues)
 
     # get rank based on hand 
-
     cardDict = {}
     
     for card in sortedHandValues:
