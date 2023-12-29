@@ -2,8 +2,8 @@ import math
 import re
 import time
 import queue
-#with open("sampleData2.txt", "r" ) as data:
-with open("input.txt", "r" ) as data:
+with open("testdata.txt", "r" ) as data:
+#with open("input.txt", "r" ) as data:
     res = data.readlines()
 
 maze = []
@@ -70,10 +70,12 @@ print(count)
 
 # part 2
 answers = []
+pipeLists = []
 
 for currentDirection in startDirections:
     mazecopy = [row.copy() for row in maze]
     currentPosition = startPos
+    pipeList = []
 
     # find all pipes in one direction and add to list with direction
     def getnext():
@@ -92,11 +94,13 @@ for currentDirection in startDirections:
     pipeSections = dict()
 
     while True:
+        pipeList.append(currentPosition)
         pipeSections[currentPosition] = currentDirection
         currentDirection, currentPosition = getnext()
         if currentPosition == startPos:
             break
-
+    
+    pipeLists.append(pipeList)
     for move in pipeSections:
         x, y = move
         mazecopy[x][y] = 'P'
@@ -156,3 +160,19 @@ for currentDirection in startDirections:
 
 answers  = set(answers)
 print(len(answers))
+
+# shoelace solution
+
+def shoelace(points: list()):
+    area = 0
+    xpoints = [point[0] for point in points] + [points[0][0]]
+    ypoints = [point[1] for point in points] + [points[0][1]]
+
+    for i in range(len(points)):
+        area += (xpoints[i]*ypoints[i+1])
+        area -= (ypoints[i]*xpoints[i+1])
+    return abs(area / 2)
+
+shoelaceArea = shoelace(pipeLists[0])
+internalArea = shoelaceArea-((len(pipeLists[0])/2)-1)
+print(internalArea)
