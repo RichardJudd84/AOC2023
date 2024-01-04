@@ -174,5 +174,6 @@ def shoelace(points: list()):
     return abs(area / 2)
 
 shoelaceArea = shoelace(pipeLists[0])
+print(shoelaceArea)
 internalArea = shoelaceArea-((len(pipeLists[0])/2)-1)
-print(internalArea)
+#print(internalArea)
