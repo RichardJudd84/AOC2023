@@ -42,6 +42,7 @@ shoelaceArea = shoelace(outlineOfPit+[(0,0)])
 area = shoelaceArea+((len(outlineOfPit)/2)+1)
 print(area)
 
+
 ####################################### part 2 #######################################
 
 point = (0,0)
